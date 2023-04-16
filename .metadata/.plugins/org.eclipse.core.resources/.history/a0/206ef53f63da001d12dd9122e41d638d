@@ -1,0 +1,65 @@
+package comparador;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ComparadorGUI extends JFrame {
+    private JLabel labelA;
+    private JLabel labelB;
+    private JTextField fieldA;
+    private JTextField fieldB;
+    private JButton buttonComparar;
+    private JLabel labelResultado;
+
+    public ComparadorGUI() {
+        // configuración del JFrame
+        setTitle("Comparador de números");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // creación de los componentes
+        labelA = new JLabel("Número A:");
+        labelB = new JLabel("Número B:");
+        fieldA = new JTextField();
+        fieldB = new JTextField();
+        buttonComparar = new JButton("Comparar");
+        labelResultado = new JLabel("");
+
+        // configuración del layout
+        setLayout(new GridLayout(3, 2, 5, 5));
+
+        // agregación de los componentes al JFrame
+        add(labelA);
+        add(fieldA);
+        add(labelB);
+        add(fieldB);
+        add(buttonComparar);
+        add(labelResultado);
+
+        // configuración del listener para el botón Comparar
+        buttonComparar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // obtener los valores de los campos de texto
+                int A = Integer.parseInt(fieldA.getText());
+                int B = Integer.parseInt(fieldB.getText());
+
+                // crear un objeto de la clase Comparador
+                Comparador comparador = new Comparador(A, B);
+
+                // obtener el resultado de la comparación
+                String resultado = comparador.compararNumeros();
+
+                // mostrar el resultado en el label correspondiente
+                labelResultado.setText(resultado);
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        ComparadorGUI comparadorGUI = new ComparadorGUI();
+        comparadorGUI.setVisible(true);
+    }
+}
+

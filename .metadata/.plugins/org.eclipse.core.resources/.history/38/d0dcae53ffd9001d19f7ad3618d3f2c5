@@ -1,0 +1,5 @@
+package salario;
+
+public class Empleado {
+
+}

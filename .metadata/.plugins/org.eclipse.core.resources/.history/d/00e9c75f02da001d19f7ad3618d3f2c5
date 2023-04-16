@@ -1,0 +1,79 @@
+package salario;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class EmpleadoGUI extends JFrame implements ActionListener {
+    private static final long serialVersionUID = 1L;
+	private JTextField codigoEmpleadoTF, nombreTF, numHorasTF, valorHoraTF, porcentajeRetencionTF;
+    private JButton calcularSalarioBrutoBtn, calcularSalarioNetoBtn;
+    private Empleado empleado;
+
+    public EmpleadoGUI() {
+        // Configurar ventana
+        setTitle("Empleado");
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // Crear paneles
+        JPanel inputPanel = new JPanel(new GridLayout(5, 2));
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+
+        // Crear campos de entrada
+        codigoEmpleadoTF = new JTextField();
+        nombreTF = new JTextField();
+        numHorasTF = new JTextField();
+        valorHoraTF = new JTextField();
+        porcentajeRetencionTF = new JTextField();
+
+        // Agregar etiquetas a los campos de entrada
+        inputPanel.add(new JLabel("Código del empleado:"));
+        inputPanel.add(codigoEmpleadoTF);
+        inputPanel.add(new JLabel("Nombre:"));
+        inputPanel.add(nombreTF);
+        inputPanel.add(new JLabel("Número de horas trabajadas:"));
+        inputPanel.add(numHorasTF);
+        inputPanel.add(new JLabel("Valor hora trabajada:"));
+        inputPanel.add(valorHoraTF);
+        inputPanel.add(new JLabel("Porcentaje de retención en la fuente:"));
+        inputPanel.add(porcentajeRetencionTF);
+
+        // Crear botones y agregarlos al panel
+        calcularSalarioBrutoBtn = new JButton("Calcular Salario Bruto");
+        calcularSalarioNetoBtn = new JButton("Calcular Salario Neto");
+        calcularSalarioBrutoBtn.addActionListener(this);
+        calcularSalarioNetoBtn.addActionListener(this);
+        buttonPanel.add(calcularSalarioBrutoBtn);
+        buttonPanel.add(calcularSalarioNetoBtn);
+
+        // Agregar paneles a la ventana
+        add(inputPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new EmpleadoGUI();
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        // Crear un objeto Empleado con los valores ingresados
+        empleado = new Empleado(
+                Integer.parseInt(codigoEmpleadoTF.getText()),
+                nombreTF.getText(),
+                Integer.parseInt(numHorasTF.getText()),
+                Double.parseDouble(valorHoraTF.getText()),
+                Double.parseDouble(porcentajeRetencionTF.getText())
+        );
+
+        // Calcular salario bruto o neto y mostrarlo en una ventana emergente
+        if (e.getSource() == calcularSalarioBrutoBtn) {
+            JOptionPane.showMessageDialog(this, "El salario bruto es: $" + empleado.calcularSalarioBruto());
+        } else if (e.getSource() == calcularSalarioNetoBtn) {
+            JOptionPane.showMessageDialog(this, "El salario neto es: $" + empleado.calcularSalarioNeto());
+        }
+    }
+}
+

@@ -26,20 +26,26 @@ public class TrianguloGUI extends JFrame implements ActionListener {
         panelPrincipal.add(panelLado);
 
         lblLado = new JLabel("Lado:");
-        txtLado = new JTextField(10);
+        txtLado = new JTextField(20);
+        txtLado.setFont(new Font("Arial", Font.PLAIN, 14));
         panelLado.add(lblLado);
         panelLado.add(txtLado);
 
-        JPanel panelBotones = new JPanel(new GridLayout(2, 2, 10, 10));
+        JPanel panelBotones = new JPanel(new GridLayout(2, 2, 5, 5));
+        panelBotones.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         panelPrincipal.add(panelBotones);
 
-        btnCrear = new JButton("Crear Triángulo");
-        btnPerimetro = new JButton("Obtener Perímetro");
-        btnAltura = new JButton("Obtener Altura");
-        btnArea = new JButton("Obtener Área");
+        btnCrear = new JButton("Crear");
+        btnPerimetro = new JButton("Perímetro");
+        btnAltura = new JButton("Altura");
+        btnArea = new JButton("Área");
         btnPerimetro.setEnabled(false);
         btnAltura.setEnabled(false);
         btnArea.setEnabled(false);
+        btnCrear.setPreferredSize(new Dimension(80, 30));
+        btnPerimetro.setPreferredSize(new Dimension(80, 30));
+        btnAltura.setPreferredSize(new Dimension(80, 30));
+        btnArea.setPreferredSize(new Dimension(80, 30));
 
         panelBotones.add(btnCrear);
         panelBotones.add(btnPerimetro);
@@ -83,6 +89,6 @@ public class TrianguloGUI extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         new TrianguloGUI();
-    }
+    }}
 
-}
+

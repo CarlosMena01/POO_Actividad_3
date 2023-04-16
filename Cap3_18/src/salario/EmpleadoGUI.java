@@ -1,42 +1,43 @@
 package salario;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class EmpleadoGUI extends JFrame implements ActionListener {
     private static final long serialVersionUID = 1L;
-	private JTextField codigoEmpleadoTF, nombreTF, numHorasTF, valorHoraTF, porcentajeRetencionTF;
+    private JTextField codigoEmpleadoTF, nombreTF, numHorasTF, valorHoraTF, porcentajeRetencionTF;
     private JButton calcularSalarioBrutoBtn, calcularSalarioNetoBtn;
     private Empleado empleado;
 
     public EmpleadoGUI() {
         // Configurar ventana
         setTitle("Empleado");
-        setSize(600, 500);
+        setSize(350, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // Crear paneles
-        JPanel inputPanel = new JPanel(new GridLayout(5, 2));
+        JPanel inputPanel = new JPanel(new GridLayout(5, 2, 5, 5));
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
         // Crear campos de entrada
-        codigoEmpleadoTF = new JTextField();
-        nombreTF = new JTextField();
-        numHorasTF = new JTextField();
-        valorHoraTF = new JTextField();
-        porcentajeRetencionTF = new JTextField();
+        codigoEmpleadoTF = new JTextField(10);
+        nombreTF = new JTextField(10);
+        numHorasTF = new JTextField(10);
+        valorHoraTF = new JTextField(10);
+        porcentajeRetencionTF = new JTextField(10);
 
         // Agregar etiquetas a los campos de entrada
         inputPanel.add(new JLabel("Código del empleado:"));
         inputPanel.add(codigoEmpleadoTF);
         inputPanel.add(new JLabel("Nombre:"));
         inputPanel.add(nombreTF);
-        inputPanel.add(new JLabel("Número de horas trabajadas:"));
+        inputPanel.add(new JLabel("Horas trabajadas:"));
         inputPanel.add(numHorasTF);
-        inputPanel.add(new JLabel("Valor hora trabajada:"));
+        inputPanel.add(new JLabel("Valor hora:"));
         inputPanel.add(valorHoraTF);
-        inputPanel.add(new JLabel("Porcentaje de retención en la fuente:"));
+        inputPanel.add(new JLabel("% Retención:"));
         inputPanel.add(porcentajeRetencionTF);
 
         // Crear botones y agregarlos al panel
@@ -76,4 +77,3 @@ public class EmpleadoGUI extends JFrame implements ActionListener {
         }
     }
 }
-
